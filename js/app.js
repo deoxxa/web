@@ -107,7 +107,7 @@ $(function() {
         this.el,
         ["div", {class: "navbar-inner"},
           ["div", {class: "container-fluid"},
-            ["a", {class: "brand", href: "#"}, "Torrents"],
+            ["a", {class: "brand", href: "/"}, "Torrents"],
             ["ul", {class: "nav"}],
             [this.searchView.render().el]
           ]
