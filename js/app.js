@@ -188,4 +188,6 @@ $(function() {
   var app = new AppView();
   app.$el.appendTo(document.body);
   app.render();
+
+  $("#loading").remove();
 }());
