@@ -13,3 +13,18 @@ body {
 .navbar .navbar-inner {
   background-image: url('../img/worn_dots/worn_dots.png');
 }
+
+.details > ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.details > ul > li {
+  float: left;
+  margin-right: 0.5em;
+}
+
+.details > div {
+  margin-top: 1em;
+}

@@ -110,21 +110,23 @@ $(function() {
       return this;
     },
   });
-  
+
   var DetailsView = Backbone.View.extend({
     tagName: "div",
+    className: "details",
     initialize: function() {
       this.model.on("change", this.render.bind(this));
     },
     render: function() {
       DOMinate([
         this.el,
-        ["div",
-          ["a", {href: "magnet:?" + ["xt=urn:btih:" + this.model.get("id"), "dn=" + encodeURIComponent(this.model.get("name"))].join("&")}, ["img", {src: "/img/magnet.png"}]]
-        ].concat(this.model.has("website") ? [["a", {href: this.model.get("website")}, ["img", {src: "/img/link.png"}]]] : []),
-        ["div", ["a", {href: "#details/" + this.model.get("id")}, ["span", {class: "name"}, this.model.has("name") ? this.model.get("name") : "unknown"]]],
-        ["div", ["abbr", {class: "time", title: this.model.has("date") ? this.model.get("date").toISOString() : "unknown"}, this.model.has("date") ? vagueTime.get({from: this.model.get("date").valueOf() / 1000}) : "unknown"]],
-        ["div", ["abbr", {class: "size", title: this.model.has("size") ? this.model.get("size").toString() : "unknown"}, this.model.has("size") ? filesize(this.model.get("size")) : "unknown"]]
+        ["h1", this.model.get("name") + " (" + filesize(this.model.get("size")) + ")"],
+        ["h3", "Uploaded " + vagueTime.get({from: this.model.get("date").valueOf() / 1000})],
+        ["ul",
+          ["li", ["a", {href: "magnet:?" + ["xt=urn:btih:" + this.model.get("id"), "dn=" + encodeURIComponent(this.model.get("name"))].join("&")}, ["img", {src: "/img/magnet.png"}]]]
+        ].concat(this.model.has("website") ? [["li", ["a", {href: this.model.get("website")}, ["img", {src: "/img/link.png"}]]]] : []),
+        ["br"],
+        ["div", {class: "well"}, this.model.get("description")]
       ]);
       return this;
     },
