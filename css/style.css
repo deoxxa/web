@@ -9,3 +9,7 @@ body {
 .torrents abbr {
   white-space: nowrap;
 }
+
+.navbar .navbar-inner {
+  background-image: url('../img/worn_dots/worn_dots.png');
+}
